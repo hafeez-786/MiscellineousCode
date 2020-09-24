@@ -1,0 +1,105 @@
+.mg-top-bottom {
+  margin-bottom: 1rem;
+}
+.marginCommon {margin-bottom: 3rem;}
+.header {
+    background-color: #4c6392;
+    min-height: 46px;
+    display: flex;
+    font-size: 22px;
+    color: white;
+    padding: 6px 12px;
+    box-shadow: -1px 2px 4px 2px #00000085;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: #4c6392;
+    padding: 6px 12px;
+    color: white;
+}
+
+.MainNote {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  box-shadow: -1px 1px 3px 3px #3b38382e;
+}
+.MainNote .form-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+.MainNote .textArea {
+  width: 100%;
+  border: none;
+}
+.MainNote .form-input:focus,
+.MainNote .textArea:focus, .MainNote Button {outline: none;}
+.MainNote Button {
+  padding: 0;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  line-height: normal;
+}
+.MainNote Button > span {
+  font-size: 24px;
+}
+
+.Main-Note {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+.Main-Note .Note {
+  width: 250px;
+  max-width: 100%;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  min-height: 100px;
+  margin: 10px;
+  word-break: break-all;
+  box-shadow: -5px 4px 7px 0px #2828295c;
+}
+.Main-Note .Note h1 {
+  padding-bottom: 6px;
+  font-size: 16px;
+}
+.Main-Note .Note .delete-icon {
+  position: absolute;
+  bottom: 4px;
+  right: 0px;
+  border-radius: 100%;
+  background-color: white;
+  color: #757575;
+}
+.Main-Note .Note .delete-icon:hover {
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 100%;
+  padding: 3px;
+  cursor: pointer;
+}
+
+@media(max-width: 767px) {
+  .MainNote {
+    width: 90%;
+  }
+  .Main-Note .Note {
+    width: 90%;
+  }
+  .Main-Note .Note .delete-icon {
+    bottom: 4px;
+    right: 10px;
+  }
+}

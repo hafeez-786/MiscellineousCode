@@ -1,0 +1,203 @@
+import React, { useState } from 'react';
+import './product.css'
+import { Container, Button } from '@material-ui/core'
+import dataImage from './data.json'
+
+
+const PAGE_PRODUCTS = 'product';
+const PAGE_CART = 'cart';
+
+function App() {
+  const [cart, setCart] = useState([]);
+  const [page, setPage] = useState(PAGE_PRODUCTS);
+
+  // For cart button
+  const addToCart = (product) => {
+    alert('Products added into the cart!')
+    setCart([...cart, { ...product }])
+  }
+
+  // Remove cartItems from cart by remove button
+  const removeFromCart = (productToRemove) => {
+    setCart(cart.filter(product => product !== productToRemove))
+  }
+
+  // Move into page from one to another by click buttons 
+  const navigateTo = (nextPage) => {
+    setPage(nextPage)
+  }
+
+
+  const renderProducts = () => (
+    <>
+      <h1 className="main-heading">Products</h1>
+      <>
+        {
+          dataImage.map((product, index) => (
+            <div className="product-card" key={index}>
+              <img src={product.imgName} alt={product.name} />
+              <h3>{product.title}</h3>
+              <h4>Price: {product.price}</h4>
+              <Button
+                onClick={() => addToCart(product)}
+                variant="contained"
+                color="secondary">Add To Cart</Button>
+            </div>
+          ))
+        }
+      </>
+    </>
+  )
+
+  const renderCart = () => (
+    <>
+      <h1 className="main-heading">Cart</h1>
+      <>
+        {
+          cart.map((product, index) => (
+            <div className="cart-block" key={index}>
+              <div className="img-left"><img src={product.imgName} alt={product.title} /></div>
+              <div className="content-right">
+                <h3>{product.title}</h3>
+                <h4>Price: {product.price}</h4>
+                <p>{product.body}</p>
+                <Button
+                  onClick={() => removeFromCart(product)}
+                  variant="contained"
+                  color="secondary">Remove</Button>
+              </div>
+            </div>
+          ))
+        }
+      </>
+    </>
+  )
+
+  return (
+    <Container>
+      <header>
+        <Button variant="outlined"
+          onClick={() => navigateTo(PAGE_CART)}
+        >Cart ({cart.length})</Button>
+
+        <Button variant="outlined"
+          onClick={() => navigateTo(PAGE_PRODUCTS)}
+        >View Products</Button>
+      </header>
+      <div>
+        {page === PAGE_PRODUCTS && renderProducts()}
+        {page === PAGE_CART && renderCart()}
+      </div>
+    </Container>
+
+  );
+}
+export default App
+
+
+JSON______________________________________________________
+
+[
+  {
+    "id": 1,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/wallpaper2you_124604_20180601002542.jpg",
+    "title": "Tuborg",
+    "price": "$200",
+    "body": "If strong beers make you feel tipsy in no time, then Tuborg should be your choice. With an alcohol percentage of only 4.8%"
+    
+  },
+  {
+    "id": 2,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/Premium_0_0_20180601002259.jpg",
+    "title": "Kingfisher",
+    "price": "$300",
+    "body": "This widely available well-recognised beer brand is Manufactured by United Breweries Group - led by the infamous Vijay Mallya"  
+  },
+  {
+    "id": 3,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/Carlsbergbeer_20180601002723.jpg",
+    "title": "Carlsberg",
+    "price": "$250",
+    "body": "Carlsberg is yet another light-tasting beer. A rejuvenating and uniquely characterful Pilsener with a malty backbone and balanced" 
+  },
+  {
+    "id": 4,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/9703805_web1_budweiser_bottles_web_20180601002859.jpg",
+    "title": "Budweiser",
+    "price": "$400",
+    "body": "Back when there weren't many options to choose from, grabbing a beer meant grabbing a six-pack of Budweiser, and you were done" 
+  }
+
+]
+
+CSS______________________________________________________
+
+
+header {
+    height: 50px;
+    padding: 20px;
+    background-color: crimson;
+}
+
+header > .MuiButtonBase-root {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    margin: 5px;
+    background: #681525e6;
+    float: right;
+}
+.main-heading {
+    text-align: center;
+}
+
+.product-card {
+  position: relative;
+  width: 275px;
+  min-height: 300px;
+  max-width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+.product-card img {
+  width: 100%;
+}
+.product-card h3, h4 {
+  text-align: center;
+  margin: 10px;
+}
+.product-card p { text-align: justify;}
+.product-card .MuiButtonBase-root {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+} 
+.cart-block {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+.cart-block .img-left {
+  display: inline-block;
+  width: 300px;
+}
+.cart-block .img-left img{
+  width: 200px;
+  max-width: 100%;
+}
+.cart-block .content-right {
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+}
+.cart-block .content-right h3,
+.cart-block .content-right h4 {
+  text-align: left;
+  margin-left: 0;
+  margin-top: 0;
+}
+

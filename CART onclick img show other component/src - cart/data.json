@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/wallpaper2you_124604_20180601002542.jpg",
+    "title": "Tuborg",
+    "price": "$200",
+    "body": "If strong beers make you feel tipsy in no time, then Tuborg should be your choice. With an alcohol percentage of only 4.8%"
+    
+  },
+  {
+    "id": 2,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/Premium_0_0_20180601002259.jpg",
+    "title": "Kingfisher",
+    "price": "$300",
+    "body": "This widely available well-recognised beer brand is Manufactured by United Breweries Group - led by the infamous Vijay Mallya"  
+  },
+  {
+    "id": 3,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/Carlsbergbeer_20180601002723.jpg",
+    "title": "Carlsberg",
+    "price": "$250",
+    "body": "Carlsberg is yet another light-tasting beer. A rejuvenating and uniquely characterful Pilsener with a malty backbone and balanced" 
+  },
+  {
+    "id": 4,
+    "imgName": "https://www.holidify.com/images/cmsuploads/compressed/9703805_web1_budweiser_bottles_web_20180601002859.jpg",
+    "title": "Budweiser",
+    "price": "$400",
+    "body": "Back when there weren't many options to choose from, grabbing a beer meant grabbing a six-pack of Budweiser, and you were done" 
+  }
+
+]

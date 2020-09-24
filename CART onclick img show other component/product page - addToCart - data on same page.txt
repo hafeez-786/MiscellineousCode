@@ -1,0 +1,194 @@
+import React, { useState } from 'react';
+import './product.css'
+import { Container, Button } from '@material-ui/core'
+//import dataImage from './data.json'
+
+
+const PAGE_PRODUCTS = 'product';
+const PAGE_CART = 'cart';
+
+function App() {
+  const [cart, setCart] = useState([]);
+  const [page, setPage] = useState(PAGE_PRODUCTS);
+
+  const [products] = useState([
+    {
+      name: "Battery",
+      price: "$1",
+      image: "https://5.imimg.com/data5/JV/CY/MY-21893711/dura-cell-500x500.jpg",
+      details: 'The most significant difference between the two, is their size. AAA batteries are smaller compared to AA. \nThis is important, as battery operated devices often use only one specific size'
+    },
+    {
+      name: "LED Light",
+      price: "$5",
+      image: "https://www.crompton.co.in/wp-content/uploads/2019/11/Anti-Bac-Bulb.png",
+      details: 'The Philips household A19 LED is an affordable replacement providing significant energy savings and replacing your current 60-Watt incandescent light bulb. This Philips 8.5-Watt LED A19 household light bulb is the perfect replacement for anywhere traditional light bulbs are used, such as table or floor lamps.'
+    },
+    {
+      name: "Computer",
+      price: "$2000",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTlVMy4bbiRNjxgjL0tPDHB0_UEAFtUa4PK6g&usqp=CAU",
+      details: 'Elegant yet simple, the stand and base of the Ideacentre A340 is sure to impress— and save on desk space. Whether it’s for work, entertainment, or family video-chats, this eye-catching PC will look great in any room.'
+    },
+    {
+      name: "Crompton Fan",
+      price: "$100",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJ1HLYnt1WI1Pb4Nu0tKxhbVnGmykJ7jbZYw&usqp=CAU",
+      details: 'Crompton fans are durable, and you can be assured of good build quality. The biggest disappointment for us from Crompton was their desistance from manufacturing energy'
+    }
+  ])
+
+  // For cart button
+  const addToCart = (product) => {
+    setCart([...cart, { ...product }])
+  }
+
+  // Remove cartItems from cart by remove button
+  const removeFromCart = (productToRemove) => {
+    setCart(cart.filter(product => product !== productToRemove))
+  }
+
+  // Move into page from one to another by click buttons 
+  const navigateTo = (nextPage) => {
+    setPage(nextPage)
+  }
+
+
+  const renderProducts = () => (
+    <>
+      <h1 className="main-heading">Products</h1>
+      <>
+        {
+          products.map((product, index) => (
+            <div className="product-card" key={index}>
+              <img src={product.image} alt={product.name} />
+              <h3>{product.name}</h3>
+              <h4>Price: {product.price}</h4>
+              <Button
+                onClick={() => addToCart(product)}
+                variant="contained"
+                color="secondary">Add To Cart</Button>
+            </div>
+          ))
+        }
+      </>
+    </>
+  )
+
+  const renderCart = () => (
+    <>
+      <h1 className="main-heading">Cart</h1>
+      <>
+        {
+          cart.map((product, index) => (
+            <div className="cart-block" key={index}>
+              <div className="img-left"><img src={product.image} alt={product.name} /></div>
+              <div className="content-right">
+                <h3>{product.name}</h3>
+                <h4>Price: {product.price}</h4>
+                <p>{product.details}</p>
+                <Button
+                  onClick={() => removeFromCart(product)}
+                  variant="contained"
+                  color="secondary">Remove</Button>
+              </div>
+            </div>
+          ))
+        }
+      </>
+    </>
+  )
+
+  return (
+    <Container>
+      <header>
+        <Button variant="outlined"
+          onClick={() => navigateTo(PAGE_CART)}
+        >Cart ({cart.length})</Button>
+
+        <Button variant="outlined"
+          onClick={() => navigateTo(PAGE_PRODUCTS)}
+        >View Products</Button>
+      </header>
+      <div>
+        {page === PAGE_PRODUCTS && renderProducts()}
+        {page === PAGE_CART && renderCart()}
+      </div>
+    </Container>
+
+  );
+}
+export default App
+
+
+_________________________________________________________
+
+
+
+header {
+    height: 50px;
+    padding: 20px;
+    background-color: crimson;
+}
+
+header > .MuiButtonBase-root {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    margin: 5px;
+    background: #681525e6;
+    float: right;
+}
+.main-heading {
+    text-align: center;
+}
+
+.product-card {
+  position: relative;
+  width: 275px;
+  min-height: 400px;
+  max-width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+.product-card img {
+  width: 100%;
+}
+.product-card h3, h4 {
+  text-align: center;
+  margin: 10px;
+}
+.product-card p { text-align: justify;}
+.product-card .MuiButtonBase-root {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+} 
+.cart-block {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+.cart-block .img-left {
+  display: inline-block;
+  width: 300px;
+}
+.cart-block .img-left img{
+  width: 200px;
+  max-width: 100%;
+}
+.cart-block .content-right {
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+}
+.cart-block .content-right h3,
+.cart-block .content-right h4 {
+  text-align: left;
+  margin-left: 0;
+  margin-top: 0;
+}

@@ -1,0 +1,68 @@
+header {
+    height: 50px;
+    padding: 20px;
+    background-color: crimson;
+}
+
+header > .MuiButtonBase-root {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    margin: 5px;
+    background: #681525e6;
+    float: right;
+}
+.main-heading {
+    text-align: center;
+}
+
+.product-card {
+  position: relative;
+  width: 275px;
+  min-height: 400px;
+  max-width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+.product-card img {
+  width: 100%;
+}
+.product-card h3, h4 {
+  text-align: center;
+  margin: 10px;
+}
+.product-card p { text-align: justify;}
+.product-card .MuiButtonBase-root {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+} 
+.cart-block {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+.cart-block .img-left {
+  display: inline-block;
+  width: 300px;
+}
+.cart-block .img-left img{
+  width: 200px;
+  max-width: 100%;
+}
+.cart-block .content-right {
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+}
+.cart-block .content-right h3,
+.cart-block .content-right h4 {
+  text-align: left;
+  margin-left: 0;
+  margin-top: 0;
+}
+
